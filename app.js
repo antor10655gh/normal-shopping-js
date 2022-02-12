@@ -1,23 +1,32 @@
-function productQuantityUpdate(isIncreasing){
-    const productInput = document.getElementById('product-quantity');
-    const productQuantity = productInput.value;
+// phone/product code is here
+function pQuantityUpdate(product, isIncreasing, price){
+    const pInput = document.getElementById(product + '-quantity');
+    const pQuantity = pInput.value;
     if(isIncreasing == true){
-        productInput.value = parseInt(productQuantity) + 1;
+        pInput.value = parseInt(pQuantity) + 1;
     }
 
-    else if(productQuantity > 0){
-        productInput.value = parseInt(productQuantity) - 1;
+    else if(pQuantity > 0){
+        pInput.value = parseInt(pQuantity) - 1;
     }
 
-    // product-price update
-    const productPrice = document.getElementById('product-price');
-    productPrice.innerText = productInput.value * 60;
+    // phone-price update
+    const pPrice = document.getElementById(product + '-price');
+    pPrice.innerText = pInput.value * price;
 
 }
 
+document.getElementById('phone-plus-btn').addEventListener('click', function(){
+    pQuantityUpdate('phone',true,1220);  
+})
+document.getElementById('phone-minus-btn').addEventListener('click', function(){
+    pQuantityUpdate('phone',false,1220);
+})
+
 document.getElementById('plus-btn').addEventListener('click', function(){
-       productQuantityUpdate(true);  
+    pQuantityUpdate('product',true,60);  
 })
 document.getElementById('minus-btn').addEventListener('click', function(){
-       productQuantityUpdate(false);
+    pQuantityUpdate('product',false,60);
 })
+
